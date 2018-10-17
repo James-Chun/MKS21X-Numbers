@@ -1,5 +1,4 @@
-public class RationalNumber extends RealNumber
-{
+public class RationalNumber extends RealNumber{
   private int numerator, denominator;
 
   /**Initialize the RationalNumber with the provided values
@@ -8,49 +7,36 @@ public class RationalNumber extends RealNumber
   *@param deno the denominator
   */
   public RationalNumber(int nume, int deno){
-    if (deno != 0) {
+      super(1.0);
       numerator = nume;
       denominator = deno;
-    }
-    
   }
 
   public double getValue(){
-    return 0;//???
+    return this.numerator / this.denominator;
   }
 
-  /**
-  *@return the numerator
-  */
   public int getNumerator(){
-    return 0;
+    return numerator;
   }
-  /**
-  *@return the denominator
-  */
+  
   public int getDenominator(){
-    return 0;
+    return denominator;
   }
-  /**
-  *@return a new RationalNumber that has the same numerator
-  *and denominator as this RationalNumber but reversed.
-  */
+  
   public RationalNumber reciprocal(){
-    return null;
+      RationalNumber newN = new RationalNumber(denominator,numerator);
+      return newN;
   }
-  /**
-  *@return true when the RationalNumbers have the same numerators and denominators, false otherwise.
-  */
+  
   public boolean equals(RationalNumber other){
-    return false;
+    return (this.getNumerator() == other.getNumerator() && this.getDenominator()==other.getDenominator());
   }
 
 
-  /**
-  *@return the value expressed as "3/4" or "8/3"
-  */
+  
   public String toString(){
-    return "0";
+    return "" + numerator + "/"+denominator;
   }
 
 

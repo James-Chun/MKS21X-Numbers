@@ -8,8 +8,15 @@ public class RationalNumber extends RealNumber{
   */
   public RationalNumber(int nume, int deno){
       super(1.0);
+      /*
+      g = gcd(nume,deno)
+      numerator = g
+      denominator = g
+      IN THE REDUCE
+      */
       numerator = nume;
       denominator = deno;
+
   }
 
   public double getValue(){
@@ -19,22 +26,22 @@ public class RationalNumber extends RealNumber{
   public int getNumerator(){
     return numerator;
   }
-  
+
   public int getDenominator(){
     return denominator;
   }
-  
+
   public RationalNumber reciprocal(){
       RationalNumber newN = new RationalNumber(denominator,numerator);
       return newN;
   }
-  
+
   public boolean equals(RationalNumber other){
     return (this.getNumerator() == other.getNumerator() && this.getDenominator()==other.getDenominator());
   }
 
 
-  
+
   public String toString(){
     return "" + numerator + "/"+denominator;
   }
@@ -47,8 +54,15 @@ public class RationalNumber extends RealNumber{
   *@return the value of the GCD
   */
   private static int gcd(int a, int b){
-    /*use euclids method or a better one*/
-    return 0;
+    if (b > a){
+      a = b;
+      b = a;
+    }
+    while (a%b != 0){
+      b = a%b;
+      a = b;
+    }
+    return b;
   }
 
 

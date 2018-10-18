@@ -10,6 +10,7 @@ public class RationalNumber extends RealNumber{
       super(1.0);
       numerator = nume;
       denominator = deno;
+      this.reduce();
   }
 
   public double getValue(){
@@ -56,7 +57,7 @@ public class RationalNumber extends RealNumber{
   */
   private static int gcd(int a, int b){
       int temp = b;
-      if (b!=0 || a!=0){
+      if (b!=0 && a!=0){
         if (a < b) {
             b = a;
             a = temp;

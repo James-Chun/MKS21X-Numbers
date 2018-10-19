@@ -55,22 +55,39 @@ public class RationalNumber extends RealNumber{
   *@param b the second integer
   *@return the value of the GCD
   */
+  /*
   private static int gcd(int a, int b){
-      int temp = b;
-      if (b!=0 && a!=0){
-        if (a < b) {
-            b = a;
-            a = temp;
-        }
-        while (a%b!=0){
-            b = a%temp;
-            a = temp;
-        }
-        return b;
+    int temp = b;
+    if (b!=0 && a!=0){
+      if (a < b) {
+          b = a;
+          a = temp;
       }
+      while (b!=0 && a != 0 && a%b!=0){
+          b = a%temp;
+          a = temp;
+      }
+      return b;
+    }
       return 1;
   }
-
+*/
+private static int gcd(int a, int b){
+    int newA = a;
+    int newB = b;
+    while (newA != 0 && newB != 0){
+      int remainder = newA % newB;
+      newA = newB;
+      newB = remainder;
+    }
+    if (newA == 0){
+      return newB;
+    }
+    if (newB == 0){
+      return newA;
+    }
+    return 1;
+  }
 
 
   /**
@@ -79,9 +96,16 @@ public class RationalNumber extends RealNumber{
   *reduced after construction.
   */
   private void reduce(){
+    if (denominator != 0){
       int gcD = gcd(numerator,denominator);
       numerator = numerator / gcD;
       denominator = denominator / gcD;
+    }
+    else {
+      numerator = 0;
+      denominator = 1;
+    }
+
   }
 
 
